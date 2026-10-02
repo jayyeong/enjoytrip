@@ -68,3 +68,7 @@ F106 뉴스 크롤링/DB 저장과 선택 예시 F111~F114(날씨·사진 추천
 - [한국관광공사 국문관광정보 서비스](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101578)
 - [Kakao 지도 문서](https://apis.map.kakao.com/web/documentation/)
 - [Bootstrap](https://getbootstrap.com/)
+
+## 디자인 버전
+
+`main`은 초기 구현을 보존하고 `design/kuad-reference`에서 디자인을 변경했습니다. [KUAD 2026](https://kuadarchive.com/2026/)의 흰 배경, 검정 타이포그래피, 왼쪽 설명과 오른쪽 대형 비주얼, 넓은 여백을 참고했습니다. 여행 기능과 어울리도록 해안 일러스트를 직접 제작했고 레퍼런스의 사진·문구는 복사하지 않았습니다. 메뉴와 검색·회원·여행·커뮤니티 기능은 그대로 이용할 수 있습니다.
