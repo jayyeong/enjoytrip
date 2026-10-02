@@ -35,3 +35,15 @@ npm run build
 ## 검증 범위
 
 CI는 JavaScript 문법, ES 모듈 경로, HTML 에셋 경로, 배포 진입 파일을 확인합니다. 외부 관광 API와 카카오 지도 사용 권한은 CI에서 확인하지 않습니다. 사용자 기능은 `docs/verification.md`에 기록한 브라우저 검증 결과를 참고하세요.
+
+## 운영 상태
+
+Cloudflare Git 연결과 이메일 인증을 완료했고 첫 배포가 성공했습니다.
+
+- 운영 주소: https://enjoytrip.pages.dev
+- 운영 브랜치: `design/kuad-reference`
+- Node: 22
+- 빌드: `npm run build`
+- 출력: `dist`
+- 현재 API 키 없음: 샘플 모드
+- GitHub CI 첫 실행 성공: https://github.com/jayyeong/enjoytrip/actions/runs/36952599113

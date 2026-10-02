@@ -74,4 +74,6 @@ F106 뉴스 크롤링/DB 저장과 선택 예시 F111~F114(날씨·사진 추천
 `main`은 초기 구현을 보존하고 `design/kuad-reference`에서 디자인을 변경했습니다. [KUAD 2026](https://kuadarchive.com/2026/)의 흰 배경, 검정 타이포그래피, 왼쪽 설명과 오른쪽 대형 비주얼, 넓은 여백을 참고했습니다. 여행 기능과 어울리도록 해안 일러스트를 직접 제작했고 레퍼런스의 사진·문구는 복사하지 않았습니다. 메뉴와 검색·회원·여행·커뮤니티 기능은 그대로 이용할 수 있습니다.
 ## CI/CD
 
-GitHub Actions에서 push/PR마다 문법·파일 참조·배포 빌드를 확인합니다. Cloudflare Pages를 Git 연결하면 push 후 동일한 검증을 거쳐 자동 배포합니다. 환경과 키 설정은 [배포 안내](docs/deployment.md)를 참고하세요. Cloudflare 계정 연결이 완료되어야 실제 자동 배포가 동작합니다.
+GitHub Actions에서 push/PR마다 문법·파일 참조·배포 빌드를 확인합니다. Cloudflare Pages를 Git 연결하면 push 후 동일한 검증을 거쳐 자동 배포합니다. 환경과 키 설정은 [배포 안내](docs/deployment.md)를 참고하세요. Cloudflare 연결과 첫 배포가 완료되었습니다. 현재 운영 주소는 https://enjoytrip.pages.dev 이며 디자인 브랜치에 push하면 자동 배포됩니다.
+
+디자인은 Fafter와 KUAD의 절제된 메뉴·작은 설명·넓은 이미지 구성을 참고해 큰 영문 문구, 장식 라벨, 반복 설명을 제거했습니다.
