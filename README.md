@@ -1,10 +1,12 @@
 # EnjoyTrip
 
+참여자: 정제영 · 박재윤 (A12)
+
 국내 여행지를 지도에서 찾고, 찜한 장소로 여행계획을 만드는 프론트엔드 프로젝트입니다. SSAFY 자바전공 EnjoyTrip 프론트 과제의 HTML·CSS·JavaScript 요구사항을 기준으로 구현했습니다.
 
 - 서비스: [enjoytrip.pages.dev](https://enjoytrip.pages.dev/)
 - GitHub: [jayyeong/enjoytrip](https://github.com/jayyeong/enjoytrip)
-- SSAFY GitLab: [aia1235/enjoytrip](https://lab.ssafy.com/aia1235/enjoytrip)
+- SSAFY GitLab: [aia1235/front_A12_jayjae](https://lab.ssafy.com/aia1235/front_A12_jayjae)
 
 ## 화면과 사용 흐름
 
@@ -25,8 +27,8 @@
 이 프로젝트는 Java 서버가 없는 **프론트엔드 과제**입니다. Python은 HTML 파일을 제공하는 로컬 서버로만 사용합니다.
 
 ```powershell
-git clone https://lab.ssafy.com/aia1235/enjoytrip.git
-cd enjoytrip
+git clone https://lab.ssafy.com/aia1235/front_A12_jayjae.git
+cd front_A12_jayjae
 Copy-Item 01_api/js/keys.example.js 01_api/js/keys.js
 python run.py
 ```
