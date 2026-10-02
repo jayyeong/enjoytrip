@@ -95,7 +95,7 @@ const setOverlay = (info, bounds) => {
     content: iwContent,
   });
 
-  kakao.maps.event.addListener(marker, "click", () => infowindow.open(map, marker));
+  kakao.maps.event.addListener(marker, "click", () => { infowindow.open(map, marker); info.onSelect?.(); });
 
   // 마커에 마우스오버 이벤트를 등록합니다
   kakao.maps.event.addListener(marker, "mouseover", function () {
