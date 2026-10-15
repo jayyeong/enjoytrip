@@ -27,3 +27,8 @@
 소스: `js/recommendation.js`, `js/recommendation-ui.js`, `js/recommendation-candidates.js`. 후보 조회 범위·중복 제거·부분 실패·전체 실패·샘플 모드는 `scripts/recommendation-candidates-test.mjs`로 추가 검증한다. 테스트: `scripts/recommendation-test.mjs`.
 
 이전 버전 운영 검증(24개 목록을 사용하던 버전): 실데이터에서 문화시설 선택 시 가가책방·가나아트센터의 취향 일치도 100.0과 추천 이유를 확인했다. 앞의 박물관·한식당 사례는 로컬 샘플 검증이다. [운영 캡처](screenshots/production-recommendation.png).
+
+
+## UX 개선 반영
+
+로그인 없이 여행 초안을 구성할 수 있어 담은 유형 분포를 즉시 추천에 활용한다. 초안은 현재 브라우저에 보관되며 다른 기기에 동기화되지 않는다. 후보 조회는 60초·64건 한도의 메모리 캐시와 동시 요청 합치기를 사용한다. 점수식과 유형별 최대 100곳 조회 상한은 동일하다.
