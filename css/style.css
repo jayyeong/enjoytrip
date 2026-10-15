@@ -12,3 +12,5 @@ body{-webkit-font-smoothing:antialiased;background:#fefefd}header{padding:25px 4
 .algorithm-panel{padding:24px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin:20px 0 30px}
 .algorithm-panel h3{font-size:1.1rem}.algorithm-panel form{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:16px 0}
 .algorithm-panel label{flex:1;min-width:200px}.algorithm-panel .small{color:#666;margin-top:14px}
+
+.recommend-types{display:flex;flex-wrap:wrap;gap:16px}.recommend-types label{display:flex!important;align-items:center;gap:8px;min-width:0!important}.recommend-types input{width:auto}.algorithm-panel fieldset{border:0;flex-basis:100%;padding:0}.algorithm-panel legend{font-size:1rem}.recommend-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.recommend-results .tile{padding:20px;border:1px solid #ddd}
