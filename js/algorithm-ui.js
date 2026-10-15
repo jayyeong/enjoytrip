@@ -1,14 +1,14 @@
 /** Java algorithm service integration; only the explicitly loaded search result is processed. */
 export function attachAlgorithms({onResults}) {
-  const host=document.createElement('section');host.className='algorithm-panel';
+  const host=document.createElement('details');host.className='algorithm-panel';
   host.setAttribute('aria-label','관광지 정렬 및 검색');
-  host.innerHTML=`<h3>불러온 여행지에서 찾기</h3><p>이름·주소를 검색하고 기준 장소와 가까운 순서로 살펴보세요.</p>
+  host.innerHTML=`<summary>목록 검색·거리 정렬</summary><div class="algorithm-content"><h3>불러온 여행지에서 찾기</h3><p>이름·주소를 검색하고 기준 장소와 가까운 순서로 살펴보세요.</p>
   <form id="algorithm-form"><label>이름 또는 주소<input name="keyword" maxlength="500" class="form-control" placeholder="예: 종로"></label>
   <label>거리 기준 장소<select name="origin" class="form-select"><option value="">원래 순서</option></select></label>
   <button class="btn btn-primary">적용</button><button type="button" id="algorithm-reset" class="btn btn-outline-secondary">초기화</button></form>
   <p class="small">현재 불러온 결과에만 적용됩니다. 거리는 좌표 기준 직선거리이며 도로 이동거리·소요시간이 아닙니다.</p>
-  <p id="algorithm-status" role="status" aria-live="polite"></p>`;
-  document.querySelector('.explore-layout').before(host);
+  <p id="algorithm-status" role="status" aria-live="polite"></p></div>`;
+  document.querySelector('#spots').before(host);
   const form=host.querySelector('form'),status=host.querySelector('#algorithm-status');let source=[],version=0,abort;
   function reset(){version++;abort?.abort();form.reset();status.textContent=`${source.length}개 장소에서 검색할 수 있습니다.`;form.querySelector('button').disabled=false;}
   host.querySelector('#algorithm-reset').onclick=()=>{reset();onResults(source,false);};

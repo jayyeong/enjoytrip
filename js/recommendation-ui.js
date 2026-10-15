@@ -2,9 +2,9 @@ import {categories} from './data.js';
 import {recommend} from './recommendation.js';
 
 export function attachRecommendations({getCandidates,getRoute,onDetail,onAdd}) {
-  const panel=document.createElement('section');
+  const panel=document.createElement('details');
   panel.className='algorithm-panel';panel.setAttribute('aria-label','취향 맞춤 여행지 추천');
-  panel.innerHTML='<h3>취향에 맞는 다음 여행지</h3><p>좋아하는 유형과 현재 여행에 담은 장소를 바탕으로 추천합니다. 현재 불러온 목록에서 이미 담은 장소는 제외합니다.</p><form><fieldset><legend>좋아하는 여행 유형 (복수 선택)</legend><div class="recommend-types"></div></fieldset><label>추천 개수<select name="limit" class="form-select"><option>3</option><option selected>5</option><option>10</option></select></label><button class="btn btn-primary">추천 받기</button></form><p class="small">취향 일치도는 유형 유사도이며 만족 확률이나 평점이 아닙니다. 동점은 불러온 순서로 표시합니다.</p><p role="status" aria-live="polite"></p><div class="recommend-results"></div>';
+  panel.innerHTML='<summary>취향 맞춤 추천</summary><div class="algorithm-content"><h3>취향에 맞는 다음 여행지</h3><p>좋아하는 유형과 현재 여행에 담은 장소를 바탕으로 추천합니다. 현재 불러온 목록에서 이미 담은 장소는 제외합니다.</p><form><fieldset><legend>좋아하는 여행 유형 (복수 선택)</legend><div class="recommend-types"></div></fieldset><label>추천 개수<select name="limit" class="form-select"><option>3</option><option selected>5</option><option>10</option></select></label><button class="btn btn-primary">추천 받기</button></form><p class="small">취향 일치도는 유형 유사도이며 만족 확률이나 평점이 아닙니다. 동점은 불러온 순서로 표시합니다.</p><p role="status" aria-live="polite"></p><div class="recommend-results"></div></div>';
   document.querySelector('.algorithm-panel').after(panel);
   const form=panel.querySelector('form'), status=panel.querySelector('[role="status"]'), results=panel.querySelector('.recommend-results');
   for(const [id,name] of categories){const label=document.createElement('label'), input=document.createElement('input');input.type='checkbox';input.name='preferred';input.value=String(id);label.append(input,document.createTextNode(name));panel.querySelector('.recommend-types').append(label);}

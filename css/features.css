@@ -1,0 +1,22 @@
+/* EP4 additions stay within the deployed map-first sidebar. */
+.algorithm-panel{margin:0 24px;border-bottom:1px solid #e8e8e3;color:#555}
+.algorithm-panel>summary{font-size:12px;cursor:pointer;padding:15px 0;min-height:44px}
+.algorithm-panel>summary:focus-visible{outline:2px solid #aaa;outline-offset:2px}
+.algorithm-content{padding:4px 0 20px}
+.algorithm-content h3{font-size:14px;margin:8px 0 12px}
+.algorithm-content p{font-size:11px;line-height:1.7;color:#777;overflow-wrap:anywhere}
+.algorithm-content form{display:flex;flex-wrap:wrap;gap:12px}
+.algorithm-content label{display:block;flex:1 1 100%;min-width:0}
+.algorithm-content input:not([type=checkbox]),.algorithm-content select{width:100%;min-height:42px;margin-top:6px}
+.algorithm-content .btn{min-height:44px;font-size:11px;padding:8px 12px}
+.algorithm-content .small{font-size:10px;margin-top:14px}
+.algorithm-content fieldset{border:0;min-width:0;padding:0;flex-basis:100%}
+.algorithm-content legend{font-size:11px}
+.recommend-types{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.recommend-types label{display:flex;align-items:center;gap:8px;min-height:36px}
+.recommend-types input{width:14px;height:14px;margin:0}
+.recommend-results{display:grid;gap:12px}
+.recommend-results .tile{padding:14px 0;margin:0;border-top:1px solid #deded9}
+.recommend-results h4{font-size:14px;margin:0 0 10px}
+.recommend-results .btn{margin-right:8px}
+@media(max-width:700px){.algorithm-panel{margin:0 20px}.algorithm-panel>summary{padding:12px 0}}
