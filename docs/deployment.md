@@ -30,20 +30,20 @@ API 키를 설정하지 않으면 명확히 표시된 샘플 모드로 실행합
 npm run build
 ```
 
-현재 로컬 개발 실행은 기존 `python run.py` / VS Code Live Server를 계속 사용합니다.
+로컬 Java 과제 실행은 `npm run serve:java`를 사용합니다. Python / Live Server에서는 브라우저 알고리즘으로 동작합니다.
 
 ## 검증 범위
 
-CI는 JavaScript 문법, ES 모듈 경로, HTML 에셋 경로, 배포 진입 파일을 확인합니다. 외부 관광 API와 카카오 지도 사용 권한은 CI에서 확인하지 않습니다. 사용자 기능은 `docs/verification.md`에 기록한 브라우저 검증 결과를 참고하세요.
+CI는 JavaScript 문법, ES 모듈 경로, HTML 에셋 경로, 빌드, Java·추천·브라우저 알고리즘 검사 및 HTTP 통합 검사를 수행합니다. 외부 관광 API와 카카오 지도 사용 권한은 CI에서 확인하지 않습니다. 사용자 기능은 최신 `docs/submission.md`와 운영 화면 캡처를 참고하세요.
 
 ## 운영 상태
 
-Cloudflare Git 연결과 이메일 인증을 완료했고 첫 배포가 성공했습니다.
+2026-10-15 기준 코드 00cd1103462457b996408cee5cf26953bf170c25의 Cloudflare 배포 성공과 운영 동작을 확인했습니다. 검색·거리 정렬·추천은 모두 브라우저에서 실행합니다. main과 운영 브랜치에 같은 기능이 반영되어 있습니다.
 
 - 운영 주소: https://enjoytrip.pages.dev
 - 운영 브랜치: `design/kuad-reference`
 - Node: 22
 - 빌드: `npm run build`
 - 출력: `dist`
-- 현재 API 키 없음: 샘플 모드
-- GitHub CI 첫 실행 성공: https://github.com/jayyeong/enjoytrip/actions/runs/36952599113
+- 운영 API 키 설정됨: 실제 관광 API 목록 및 Kakao 지도 표시 확인. 키 없는 로컬은 샘플 모드
+

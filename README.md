@@ -20,17 +20,17 @@
 | 번호 | 요구사항 | 구현·산출물 |
 |---|---|---|
 | F401 | 기존 기능 분석 및 2가지 이상 알고리즘 선정 | 이름·주소 탐색, 거리 정렬, 추가 취향 추천의 필요성과 선택 이유 |
-| F402 | 첫 번째 알고리즘 구현·테스트 | Java KMP, prefix 재사용, 이름·주소 독립 탐색 |
-| F403 | 다른 유형 알고리즘 구현·테스트 | Java 안정 병합 정렬, Haversine 거리 사전 계산 |
+| F402 | 첫 번째 알고리즘 구현·테스트 | Java·JavaScript KMP, prefix 재사용, 이름·주소 독립 탐색 |
+| F403 | 다른 유형 알고리즘 구현·테스트 | Java·JavaScript 안정 병합 정렬, Haversine 거리 사전 계산 |
 | F404 | 이론·실측 성능 분석 및 개선 | Big-O, 100/1,000/10,000개 시간·할당 메모리, 기준선 비교 |
 | F405 | 알고리즘 적용 기획서 | 지정 양식의 3개 기획서와 검증·성능 부록 |
 | 추가 기능 | 취향 맞춤 추천 | JS 콘텐츠 기반 코사인 유사도, 담은 장소 제외, 추천 이유 |
 
-Java 검사 **2,064개**, 추천 검사 **212개**, HTTP 통합 사례 **12개**를 검증했습니다. 기존 지도·찜·여행계획·게시판 UI와 새 기능의 연결도 브라우저에서 확인했습니다.
+Java 검사 **2,064개**, 브라우저 알고리즘 검사 **2,014개**, 추천 검사 **212개**, HTTP 통합 사례 **12개**를 검증했습니다. 기존 지도·찜·여행계획·게시판 UI와 새 기능의 연결도 브라우저에서 확인했습니다.
 
 ## 실행
 
-필수 환경은 **Node.js 22 이상, JDK 21 이상**입니다. `java`와 `javac`가 PATH에서 실행되어야 합니다. 별도의 npm 의존성 설치는 필요 없습니다. ZIP을 풀거나 EP4 브랜치를 체크아웃한 프로젝트 루트에서 실행합니다.
+필수 환경은 **Node.js 22 이상, JDK 21 이상**입니다. `java`와 `javac`가 PATH에서 실행되어야 합니다. 별도의 npm 의존성 설치는 필요 없습니다. ZIP을 풀거나 최신 main을 체크아웃한 프로젝트 루트에서 실행합니다.
 
 ```sh
 npm run build
@@ -70,15 +70,15 @@ npm run serve:java
 
 | 기능 | 실행 위치 | 핵심 자료구조·복잡도 |
 |---|---|---|
-| KMP 이름·주소 검색 | Java | prefix 배열, 시간 O(M+T+N) |
-| 거리순 병합 정렬 | Java | Ranked·보조 배열, 시간 O(K log K), 보조 공간 O(K) |
+| KMP 이름·주소 검색 | 운영 JS / 로컬 Java | prefix 배열, 시간 O(M+T+N) |
+| 거리순 병합 정렬 | 운영 JS / 로컬 Java | Ranked·보조 배열, 시간 O(K log K), 보조 공간 O(K) |
 | 코사인 추천 | JavaScript | 유형 가중치 Map·ID Set, 시간 O(R+D+N log N), 공간 O(R+D+N) |
 
 N은 후보 수, T는 이름·주소 총 길이, M은 패턴 길이, K는 일치 수, R은 담은 장소 수, D는 유형 수 8입니다. 세부 공간 비용과 입력 처리 범위는 기획서에 명시했습니다.
 
 ```sh
 npm run check             # JS 문법·모듈·HTML 자원 검사
-npm test                  # Java + 추천 정확성 검사
+npm test                  # Java + 브라우저 알고리즘 + 추천 정확성 검사
 npm run test:api          # Java 서버 실행 중 HTTP 통합 검사
 npm run benchmark         # Java 검색·정렬 실험
 npm run benchmark:existing # Java 서버 실행 중 기존 JS와 HTTP 비교
@@ -106,7 +106,8 @@ npm run benchmark:existing # Java 서버 실행 중 기존 JS와 HTTP 비교
 ```text
 backend/src/enjoytrip/  Java 알고리즘·서버·테스트·벤치마크
 js/main.js             관광지·회원·찜·여행·게시판 연결
-js/algorithm-ui.js     Java 검색·정렬 UI
+js/algorithm-ui.js     실행 환경별 검색·정렬 UI
+js/browser-algorithms.js 운영 KMP·병합 정렬·Haversine
 js/recommendation*.js  코사인 추천 로직과 UI
 css/style.css          배포본 지도 중심 UI
 css/features.css       사이드바 추가 기능 스타일
@@ -118,8 +119,19 @@ docs/                  기획서 PDF·Markdown·검증 결과
 
 ## 배포와 제출 상태
 
-- [기존 운영 사이트](https://enjoytrip.pages.dev/)의 배포 브랜치는 `design/kuad-reference`입니다.
+- [운영 사이트](https://enjoytrip.pages.dev/)의 배포 브랜치는 `design/kuad-reference`입니다.
 - EP4 코드와 산출물은 [PR #2](https://github.com/jayyeong/enjoytrip/pull/2)를 통해 main에 병합했습니다. 학교 제출은 별도입니다.
 - Cloudflare Pages에서는 검색·거리 정렬·추천을 모두 브라우저에서 실행하므로 Java 서버 호스팅 없이 사용할 수 있습니다. Java 구현과 기존 성능 실험은 과제·로컬 검증용으로 유지합니다.
-- CI는 정적 검사·빌드, Java·추천 검사, HTTP 통합 검증을 수행합니다. 관광 API와 지도 실키는 로컬에서 검증하지 않았습니다.
+- CI는 정적 검사·빌드, Java·브라우저 알고리즘·추천 검사, HTTP 통합 검증을 수행합니다. 운영에서는 실제 관광 API 조회와 Kakao 지도 표시를 확인했습니다. 로컬 검증은 키 없이 샘플 모드를 사용했습니다.
 - [기존 프론트 GitLab](https://lab.ssafy.com/aia1235/front_A12_jayjae)은 참고 링크입니다. EP4 제출 대상과 반별 규칙은 수업 안내를 따릅니다.
+
+## 최종 배포 검증 (2026-10-15)
+
+기준 코드: `00cd1103462457b996408cee5cf26953bf170c25` (`main` 및 `design/kuad-reference`). Cloudflare Pages 배포 성공 후 운영 브라우저에서 확인했습니다. 이후 문서 수정 커밋은 실행 코드를 변경하지 않습니다.
+
+- 실시간 관광 API: 총 49,614개 표시, 첫 목록 24개 로드 및 Kakao 지도 마커 표시. 데이터 수와 순서는 API 변경에 따라 달라질 수 있습니다.
+- 목록 검색·정렬: `공주시` + 기준 `가가상점` → 가가상점 0.00km, 가가책방 0.09km. 초기화하면 24개 복구.
+- 추천: `문화시설` 선택 → 가가책방·가나아트센터, 취향 일치도 100.0 및 선택 이유 표시.
+- 검증 화면: [검색·정렬](docs/screenshots/production-search-sort.png), [추천](docs/screenshots/production-recommendation.png).
+
+최종 ZIP에는 소스, 테스트, 기획서 PDF·원문, 성능 CSV, 시연 안내와 운영 화면을 포함합니다. 빌드 결과·실제 API 키·Git 이력은 제외합니다.
