@@ -5,7 +5,13 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check.mjs",
+    "test": "node scripts/java.mjs test",
+    "benchmark": "node scripts/java.mjs benchmark",
+    "serve:java": "node scripts/java.mjs serve",
+    "test:api": "node scripts/api-test.mjs",
+    "benchmark:existing": "node scripts/compare-existing.mjs",
     "build": "node scripts/check.mjs && node scripts/build.mjs"
   },
   "engines": { "node": ">=22" }
 }
+

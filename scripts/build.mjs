@@ -3,7 +3,7 @@ import { resolve, dirname } from 'node:path';
 const root = resolve(import.meta.dirname,'..');
 const output = resolve(root,'dist');
 // Only explicitly listed public files are included; local keys, PDFs and screenshots stay out.
-const publicFiles = ['index.html','css/style.css','js/main.js','js/select.js','js/api.js','js/data.js','01_api/js/kakao.js','resources/coast.svg','resources/marker.png'];
+const publicFiles = ['index.html','css/style.css','js/main.js','js/algorithm-ui.js','js/select.js','js/api.js','js/data.js','01_api/js/kakao.js','resources/coast.svg','resources/marker.png'];
 for (const file of publicFiles) {
   const target = resolve(output,file);
   mkdirSync(dirname(target),{recursive:true});
@@ -16,3 +16,4 @@ const keys = {
 writeFileSync(resolve(output,'01_api/js/keys.js'),Object.entries(keys).map(([name,value])=>`export const ${name} = ${JSON.stringify(value)};`).join('\n')+'\n');
 writeFileSync(resolve(output,'_headers'),'/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
 console.log('Built dist/ (API key values are not logged). Missing keys use the labelled sample mode.');
+

@@ -1,8 +1,26 @@
 # EnjoyTrip
 
+## Algorithm EP4 추가 구현
+
+Java 21 **KMP 이름·주소 검색**과 **병합 정렬 거리순 탐색**을 기존 화면에 연결했습니다. [기획·복잡도·검증 보고서](docs/algorithm-plan.md), [제출 안내](docs/submission.md)에 F401~F405와 100/1,000/10,000개 성능 실험을 정리했습니다.
+
+Node.js 22 이상, JDK 21 이상에서 별도 npm 의존성 설치 없이 실행합니다.
+
+```sh
+npm run build
+npm test
+npm run serve:java
+```
+
+http://127.0.0.1:8001 에서 **불러온 여행지에서 찾기**를 사용합니다. 샘플 모드에서 `종로` + 기준 장소 `경복궁`을 적용하면 거리순 6개 결과를 확인할 수 있습니다. 초기화로 원래 목록을 복구합니다. 다른 터미널에서 `npm run test:api`로 통합 테스트를 실행합니다.
+
+정확성 2,064개 검사와 HTTP 12개 사례를 통과했습니다. N=10,000 병합 정렬은 선택 정렬 기준선보다 약 36배 빨랐습니다. 일반 짧은 문자열의 기존 JS 검색은 Java HTTP 호출보다 빠르므로 전체 검색 속도 개선을 주장하지 않습니다. 측정 범위와 CSV는 기획서에 있습니다. 거리는 직선거리이며 현재 불러온 목록에만 적용됩니다.
+
+`npm run benchmark`는 Java 실험, `npm run benchmark:existing`는 실행 중인 Java 서버와 기존 JS 검색 비교입니다. Java 소스는 `backend/src/enjoytrip`, 화면 연동은 `js/algorithm-ui.js`에 있습니다.
+
 공공데이터를 활용한 국내 여행 탐색 서비스. `자바전공_enjoytrip_16_03_프론트.pdf`의 필수 요구사항과 여행계획·Hotplace·커뮤니티 기능을 HTML5, CSS3, JavaScript로 구현했습니다. Bootstrap 5.3.3을 사용하며 작은 화면에서도 동작합니다.
 
-## 실행
+## 기존 프론트엔드만 실행
 
 프로젝트 루트에서 다음 명령을 실행하고 http://localhost:8001 으로 접속하세요.
 
@@ -11,6 +29,8 @@ python run.py
 ```
 
 VS Code Live Server로 `index.html`을 열어도 됩니다. ES 모듈과 브라우저 저장/암호화 기능을 사용하므로 파일 더블클릭 대신 localhost 서버에서 실행하세요.
+
+정적 서버에서는 Java 알고리즘 API가 동작하지 않습니다. EP4 시연에는 위 `npm run serve:java`를 사용하세요.
 
 ## API 설정
 
@@ -77,3 +97,4 @@ F106 뉴스 크롤링/DB 저장과 선택 예시 F111~F114(날씨·사진 추천
 GitHub Actions에서 push/PR마다 문법·파일 참조·배포 빌드를 확인합니다. Cloudflare Pages를 Git 연결하면 push 후 동일한 검증을 거쳐 자동 배포합니다. 환경과 키 설정은 [배포 안내](docs/deployment.md)를 참고하세요. Cloudflare 연결과 첫 배포가 완료되었습니다. 현재 운영 주소는 https://enjoytrip.pages.dev 이며 디자인 브랜치에 push하면 자동 배포됩니다.
 
 디자인은 Fafter와 KUAD의 절제된 메뉴·작은 설명·넓은 이미지 구성을 참고해 큰 영문 문구, 장식 라벨, 반복 설명을 제거했습니다.
+
