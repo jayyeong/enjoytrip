@@ -25,3 +25,4 @@ for (const match of html.matchAll(/(?:src|href)=["']([^"']+)["']/g)) {
   if (!existsSync(resolve(root,url))) throw Error(`Missing asset: ${url}`);
 }
 console.log(`Passed: ${sources.length} JavaScript files and HTML asset references.`);
+

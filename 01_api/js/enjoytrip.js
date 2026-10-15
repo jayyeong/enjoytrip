@@ -181,3 +181,4 @@ async function searchAround(lat, lng) {
     console.log(e);
   }
 }
+

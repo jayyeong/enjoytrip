@@ -49,3 +49,4 @@ export const getFetch = async (url, param, isXml) => {
 export const getLabel = (select) => select.selectedOptions[0].text;
 
 
+

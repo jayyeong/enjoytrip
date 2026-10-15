@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check.mjs",
-    "test": "node scripts/java.mjs test && node scripts/recommendation-test.mjs && node scripts/browser-algorithms-test.mjs",
+    "test": "node scripts/java.mjs test && node scripts/recommendation-test.mjs && node scripts/recommendation-candidates-test.mjs && node scripts/browser-algorithms-test.mjs",
     "benchmark": "node scripts/java.mjs benchmark",
     "serve:java": "node scripts/java.mjs serve",
     "test:api": "node scripts/api-test.mjs",

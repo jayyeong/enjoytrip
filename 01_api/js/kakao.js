@@ -112,3 +112,4 @@ const setOverlay = (info, bounds) => {
     infowindow.close();
   });
 };
+

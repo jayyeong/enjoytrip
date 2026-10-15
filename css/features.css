@@ -20,3 +20,21 @@
 .recommend-results h4{font-size:14px;margin:0 0 10px}
 .recommend-results .btn{margin-right:8px}
 @media(max-width:700px){.algorithm-panel{margin:0 20px}.algorithm-panel>summary{padding:12px 0}}
+
+/* Visually separate recommendations, refinement tools and the main result list. */
+.map-sidebar .list-heading{margin:20px 24px 0;padding:16px 0 8px;border-top:2px solid #253d37;font-size:16px;font-weight:700}
+.recommendation-panel{background:#edf5f1;border:1px solid #c6ded2;border-radius:10px;padding:0 14px;margin-top:14px;margin-bottom:18px}
+.recommendation-panel>summary{font-size:14px;font-weight:700;color:#205a46}
+.recommend-results .tile{background:#fff;border:1px solid #c6ded2;border-radius:8px;padding:14px}
+.recommend-results h4{color:#205a46;font-weight:700;line-height:1.6}
+.map-sidebar .spot-media{position:relative;flex:0 0 72px;width:72px;min-height:84px;align-self:flex-start}
+.map-sidebar .spot-media .spot-art{width:72px;min-width:72px;height:84px;object-fit:cover;border-radius:6px}
+.spot-number{position:absolute;z-index:1;left:4px;top:4px;min-width:26px;padding:3px 6px;border-radius:4px;background:#203b36;color:white;font-size:12px;font-weight:700;text-align:center;box-shadow:0 1px 4px #0003}
+.photo-empty{display:grid;place-items:center;background:#eff1ed;border-radius:6px;min-height:84px;font-size:10px;color:#69766f;padding-top:20px}
+.map-sidebar #more{display:block;margin:20px auto;min-height:44px}
+.map-sidebar #more[hidden]{display:none}
+.map-sidebar .spot-copy{min-width:0}.map-sidebar .spot-title{line-height:1.5;overflow-wrap:anywhere}
+
+@media(min-width:701px){.map-body{grid-template-columns:420px minmax(0,1fr)}.sidebar-heading{padding:16px 20px 0}.map-sidebar .search-bar{padding:12px 20px;gap:8px}.map-sidebar .result-line{padding:10px 20px}.map-sidebar .keyword-field{display:flex;align-items:center;gap:10px}.map-sidebar .keyword-field input{flex:1;min-width:0;margin:0}.map-sidebar .search-bar .btn{min-height:38px}.map-sidebar .spot-card h3{font-size:15px}.map-sidebar .spot-card p{font-size:12px}}
+.recommendation-panel .algorithm-content label:has(select){flex:1}.recommendation-panel .algorithm-content form>button{align-self:flex-end}.recommendation-panel .algorithm-content>p{margin:8px 0}
+.map-sidebar .spot-media .spot-art{width:72px;min-width:72px;height:84px}

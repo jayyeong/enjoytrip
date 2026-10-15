@@ -10,3 +10,4 @@ if __name__ == '__main__':
     os.chdir(Path(__file__).resolve().parent)
     print('EnjoyTrip: http://localhost:8001', flush=True)
     ThreadingHTTPServer(('127.0.0.1', 8001), Handler).serve_forever()
+

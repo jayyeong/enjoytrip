@@ -46,3 +46,4 @@ export function enhanceSelects(selects) {
     select.addEventListener('change', sync); new MutationObserver(sync).observe(select, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] }); sync();
   }
 }
+

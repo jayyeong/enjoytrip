@@ -11,3 +11,4 @@ export async function tourAPI(method,params={}){
  const body=json.response.body;const items=body.items?.item||[];
  return {items:Array.isArray(items)?items:[items],total:Number(body.totalCount||0)};
 }
+
