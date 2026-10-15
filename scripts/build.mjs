@@ -14,6 +14,6 @@ const keys = {
   KAKAO_MAP_KEY: process.env.KAKAO_MAP_KEY || ''
 };
 writeFileSync(resolve(output,'01_api/js/keys.js'),Object.entries(keys).map(([name,value])=>`export const ${name} = ${JSON.stringify(value)};`).join('\n')+'\n');
-writeFileSync(resolve(output,'_headers'),'/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
+writeFileSync(resolve(output,'_headers'),'/*\n  Cache-Control: public, max-age=0, must-revalidate\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
 console.log('Built dist/ (API key values are not logged). Missing keys use the labelled sample mode.');
 

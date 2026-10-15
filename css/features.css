@@ -37,4 +37,3 @@
 
 @media(min-width:701px){.map-body{grid-template-columns:420px minmax(0,1fr)}.sidebar-heading{padding:16px 20px 0}.map-sidebar .search-bar{padding:12px 20px;gap:8px}.map-sidebar .result-line{padding:10px 20px}.map-sidebar .keyword-field{display:flex;align-items:center;gap:10px}.map-sidebar .keyword-field input{flex:1;min-width:0;margin:0}.map-sidebar .search-bar .btn{min-height:38px}.map-sidebar .spot-card h3{font-size:15px}.map-sidebar .spot-card p{font-size:12px}}
 .recommendation-panel .algorithm-content label:has(select){flex:1}.recommendation-panel .algorithm-content form>button{align-self:flex-end}.recommendation-panel .algorithm-content>p{margin:8px 0}
-.map-sidebar .spot-media .spot-art{width:72px;min-width:72px;height:84px}

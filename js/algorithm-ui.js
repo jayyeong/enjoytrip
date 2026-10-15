@@ -35,4 +35,3 @@ export function attachAlgorithms({onResults}) {
     source.forEach((s,i)=>{if(s.mapx!==''&&s.mapy!==''&&s.mapx!=null&&s.mapy!=null&&Number.isFinite(Number(s.mapx))&&Number.isFinite(Number(s.mapy))&&Math.abs(Number(s.mapx))<=180&&Math.abs(Number(s.mapy))<=90)select.add(new Option(s.title,String(i)));});
   }};
 }
-

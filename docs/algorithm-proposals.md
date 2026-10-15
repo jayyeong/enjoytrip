@@ -82,4 +82,3 @@ Java와 브라우저 구현에서 각각 무작위 2,000회 검색을 기본 부
 **복잡도:** N: 후보 수, R: 현재 여행의 장소 수, D=8: 유형 수. 시간 O(R+D+N log N), 공간 O(R+D+N). 후보별 코사인 계산은 O(1). 추천 개수만 제한하며 양수 점수 후보 전체를 정렬한다.
 
 **소스:** js/recommendation.js · js/recommendation-ui.js · js/recommendation-candidates.js
-
