@@ -50,7 +50,7 @@ $env:KAKAO_MAP_KEY = '본인의 Kakao JavaScript 키'
 npm run serve:java
 ```
 
-카카오 허용 도메인에 실제 실행 주소를 등록합니다. 원본 HTML을 Python/Live Server로 여는 경우에만 `keys.example.js`를 `keys.js`로 복사하여 설정합니다. 정적 서버에서는 추천과 기존 프론트 기능은 실행되지만 Java 검색·정렬 API는 실행되지 않습니다. 키 파일은 Git에 포함하지 않습니다.
+카카오 허용 도메인에 실제 실행 주소를 등록합니다. 원본 HTML을 Python/Live Server로 여는 경우에만 `keys.example.js`를 `keys.js`로 복사하여 설정합니다. 운영 사이트에서는 KMP·병합 정렬을 브라우저 JavaScript로 실행합니다. 로컬 Java 서버에서는 기존 Java API를 사용하며, 로컬 정적 서버의 API가 없으면 브라우저 구현으로 전환합니다. 키 파일은 Git에 포함하지 않습니다.
 
 ## 사용·시연 순서
 
@@ -61,6 +61,10 @@ npm run serve:java
 5. 장소 상세·찜·여행에 추가를 사용합니다. 나의 여행에서 방문 순서·날짜·경비·메모를 저장하고 수정할 수 있습니다.
 
 추가 검색·정렬·추천의 후보는 **현재 불러온 목록**입니다. 추천은 재검색으로 좁힌 카드 목록과 독립적으로 원본 목록을 사용합니다. 거리순은 좌표 기준 직선거리이며 도로 이동거리나 최적 경로가 아닙니다.
+
+## 운영 브라우저 실행
+
+`js/browser-algorithms.js`에 Java와 같은 KMP, 안정 병합 정렬, Haversine 계산을 구현했습니다. 브라우저 구현 검사 2,014개(무작위 검색, 안정 정렬, 좌표 누락·검증)를 추가했습니다. 표시 시간은 실행 위치에 따라 서버 또는 브라우저 계산 시간으로 구분합니다. 기존 Java 성능 수치를 브라우저 성능으로 해석하지 않습니다.
 
 ## 알고리즘과 검증
 
@@ -115,7 +119,7 @@ docs/                  기획서 PDF·Markdown·검증 결과
 ## 배포와 제출 상태
 
 - [기존 운영 사이트](https://enjoytrip.pages.dev/)의 배포 브랜치는 `design/kuad-reference`입니다.
-- EP4 변경은 `codex/algorithm-ep4`와 [PR #2](https://github.com/jayyeong/enjoytrip/pull/2)에 있습니다. 운영 배포·PR 병합·학교 제출은 수행하지 않았습니다.
-- Cloudflare Pages의 정적 dist 배포만으로는 Java API가 실행되지 않습니다. 추천은 정적 실행 가능하며 검색·정렬의 운영 사용에는 Java 서버 호스팅과 연결이 필요합니다.
+- EP4 코드와 산출물은 [PR #2](https://github.com/jayyeong/enjoytrip/pull/2)를 통해 main에 병합했습니다. 학교 제출은 별도입니다.
+- Cloudflare Pages에서는 검색·거리 정렬·추천을 모두 브라우저에서 실행하므로 Java 서버 호스팅 없이 사용할 수 있습니다. Java 구현과 기존 성능 실험은 과제·로컬 검증용으로 유지합니다.
 - CI는 정적 검사·빌드, Java·추천 검사, HTTP 통합 검증을 수행합니다. 관광 API와 지도 실키는 로컬에서 검증하지 않았습니다.
 - [기존 프론트 GitLab](https://lab.ssafy.com/aia1235/front_A12_jayjae)은 참고 링크입니다. EP4 제출 대상과 반별 규칙은 수업 안내를 따릅니다.

@@ -3,7 +3,7 @@ import { resolve, dirname } from 'node:path';
 const root = resolve(import.meta.dirname,'..');
 const output = resolve(root,'dist');
 // Only explicitly listed public files are included; local keys, PDFs and screenshots stay out.
-const publicFiles = ['index.html','css/style.css','css/features.css','js/main.js','js/algorithm-ui.js','js/recommendation.js','js/recommendation-ui.js','js/select.js','js/api.js','js/data.js','01_api/js/kakao.js','resources/coast.svg','resources/marker.png'];
+const publicFiles = ['index.html','css/style.css','css/features.css','js/main.js','js/algorithm-ui.js','js/browser-algorithms.js','js/recommendation.js','js/recommendation-ui.js','js/select.js','js/api.js','js/data.js','01_api/js/kakao.js','resources/coast.svg','resources/marker.png'];
 for (const file of publicFiles) {
   const target = resolve(output,file);
   mkdirSync(dirname(target),{recursive:true});
