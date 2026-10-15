@@ -18,7 +18,7 @@ export function enhanceSelects(selects) {
     list.setAttribute('aria-label', label); wrap.append(trigger, list);
     const sync = () => {
       const text = select.selectedOptions[0]?.textContent || '전체';
-      trigger.textContent = text; trigger.setAttribute('aria-label', label + ': ' + text);
+      trigger.disabled = select.disabled; trigger.textContent = text; trigger.setAttribute('aria-label', label + ': ' + text);
       list.replaceChildren(...Array.from(select.options, (option, index) => {
         const item = document.createElement('button'); item.type = 'button'; item.className = 'select-option';
         item.textContent = option.textContent; item.setAttribute('role', 'option');
@@ -43,6 +43,6 @@ export function enhanceSelects(selects) {
       }
     };
     wrap.addEventListener('focusout', e => { if (e.relatedTarget && !wrap.contains(e.relatedTarget)) { trigger.setAttribute('aria-expanded', 'false'); list.hidden = true; } });
-    select.addEventListener('change', sync); new MutationObserver(sync).observe(select, { childList: true, subtree: true }); sync();
+    select.addEventListener('change', sync); new MutationObserver(sync).observe(select, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] }); sync();
   }
 }

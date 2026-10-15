@@ -3,3 +3,5 @@ __pycache__/
 01_api/js/keys.js
 자바전공_enjoytrip_16_03_프론트.pdf
 dist/
+
+backend/build/

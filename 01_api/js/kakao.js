@@ -42,7 +42,9 @@ export const initMap = (containerId = "map") => {
   geocoder = new kakao.maps.services.Geocoder();
 };
 
+let mapUpdate = 0;
 export const updateMap = async (infos) => {
+  const update = ++mapUpdate;
   markers.forEach((m) => m.setMap(null));
   markers.length = 0; // 마커와 경계 초기화
 
@@ -61,6 +63,7 @@ export const updateMap = async (infos) => {
     // END
 
     await Promise.all(promises); // 모두 resolve 되면.
+    if (update !== mapUpdate) return;
 
     for (let info of infos) {
       // 잘못된 좌표가 들어오는 경우는 filtering(우리나라만 취급)
@@ -95,7 +98,7 @@ const setOverlay = (info, bounds) => {
     content: iwContent,
   });
 
-  kakao.maps.event.addListener(marker, "click", () => infowindow.open(map, marker));
+  kakao.maps.event.addListener(marker, "click", () => { infowindow.open(map, marker); info.onSelect?.(); });
 
   // 마커에 마우스오버 이벤트를 등록합니다
   kakao.maps.event.addListener(marker, "mouseover", function () {

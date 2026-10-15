@@ -15,6 +15,21 @@ jobs:
           node-version: '22'
       - name: Check and build public site
         run: npm run build
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm test
+      - name: Verify Java API
+        run: |
+          java -cp backend/build enjoytrip.Server dist 8001 > /tmp/enjoytrip-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8001/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:api
       - name: Verify deployment entrypoints
         run: |
           test -f dist/index.html
@@ -26,3 +41,4 @@ jobs:
           name: enjoytrip-site
           path: dist/
           retention-days: 7
+
